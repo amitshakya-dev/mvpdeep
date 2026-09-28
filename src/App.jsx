@@ -141,9 +141,16 @@ function App() {
           <a href="mailto:info@mvpdeepcleaners.com">info@mvpdeepcleaners.com</a>
           <a href={`https://wa.me/91${phone}`}>WhatsApp us ↗</a>
         </div>
+        <div className="footer-social">
+          <strong>Follow us</strong>
+          <div className="social-links">
+            <a href="#instagram" aria-label="Instagram" title="Instagram">◎</a>
+            <a href="#facebook" aria-label="Facebook" title="Facebook">f</a>
+          </div>
+        </div>
       </footer>
       <div className="footer-bottom">
-        <span>© 2024 MVP Deep Cleaners &amp; Maintenance</span>
+        <span>© 2026 MVP Deep Cleaners &amp; Maintenance</span>
         <span>Clean spaces. Clear minds.</span>
       </div>
     </div>
@@ -151,12 +158,14 @@ function App() {
 }
 function HomePage({ go }) {
   const [activeGallery, setActiveGallery] = useState(0);
+  const [isGalleryPaused, setIsGalleryPaused] = useState(false);
   useEffect(() => {
+    if (isGalleryPaused) return undefined;
     const timer = window.setInterval(() => {
       setActiveGallery((slide) => (slide + 1) % galleries.length);
     }, 4500);
     return () => window.clearInterval(timer);
-  }, []);
+  }, [isGalleryPaused]);
 
   const previousGallery = () => {
     setActiveGallery((slide) => (slide - 1 + galleries.length) % galleries.length);
@@ -167,7 +176,14 @@ function HomePage({ go }) {
 
   return (
     <>
-      <section className="home-gallery" aria-label="Recent cleaning work">
+      <section
+        className="home-gallery"
+        aria-label="Recent cleaning work"
+        onMouseEnter={() => setIsGalleryPaused(true)}
+        onMouseLeave={() => setIsGalleryPaused(false)}
+        onFocus={() => setIsGalleryPaused(true)}
+        onBlur={() => setIsGalleryPaused(false)}
+      >
         <div className="home-gallery-track">
           {galleries.map((item, index) => (
             <figure
@@ -246,9 +262,9 @@ function HomePage({ go }) {
               <i />
             </span>
             <span>
-              <b>Trusted by 500+ clients</b>
+              <b>Local care for Goa homes and businesses</b>
               <br />
-              in Gauteng and beyond
+              with attention to every detail
             </span>
           </div>
         </div>
@@ -549,7 +565,7 @@ function BookingPage() {
                 </label>
                 <label>
                   Phone number *
-                  <input required type="tel" name="phone" placeholder="+91" />
+                  <input required type="tel" name="phone" placeholder="+91 8862 004 741" />
                 </label>
                 <label>
                   Service required *

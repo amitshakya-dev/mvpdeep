@@ -17,6 +17,13 @@ body { background:var(--cream); color:var(--ink); font-family:'DM Sans', sans-se
 .footer-brand span { font-size:34px; letter-spacing:-2px; }
 .footer-brand small { font-size:10px; line-height:1.35; letter-spacing:2px; }
 .footer > div:first-child > p:first-child { margin-top:0; }
+.social-links { display:flex; gap:10px; }
+.social-links a { display:grid; place-items:center; width:30px; height:30px; margin:0; border:1px solid #6b8880; border-radius:50%; color:#fff; font:700 17px/1 'Manrope', sans-serif; }
+.social-links a:hover { color:var(--yellow); border-color:var(--yellow); }
+.home-gallery-track { height:210px; }
+.home-service-section { padding-top:42px; padding-bottom:56px; }
+.hero-section { min-height:520px; }
+.hero-note { margin-top:50px; }
 
 .home-gallery { max-width:1120px; margin:0 auto; padding:22px 0 0; }
 .home-gallery-track { position:relative; height:250px; overflow:hidden; border-radius:5px; background:var(--ink); }
